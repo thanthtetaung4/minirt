@@ -3,41 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 11:30:56 by taung             #+#    #+#             */
-/*   Updated: 2024/10/25 20:18:47 by taung            ###   ########.fr       */
+/*   Created: 2024/05/27 15:20:10 by aoo               #+#    #+#             */
+/*   Updated: 2024/12/23 13:26:13 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list
-	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*first;
-	t_list	*new;
+	t_list	*result;
+	t_list	*n_node;
+	t_list	*last;
+	void	*item;
 
-	if (!f || !del)
-		return (NULL);
-	first = NULL;
+	result = NULL;
 	while (lst)
 	{
-		new = ft_lstnew((*f)(lst->content));
-		if (!(new))
+		item = f(lst->data);
+		n_node = ft_lstnew(item);
+		if (!n_node)
 		{
-			while (first)
-			{
-				new = first->next;
-				(*del)(first->content);
-				free(first);
-				first = new;
-			}
-			lst = NULL;
+			del(item);
+			ft_lstclear(&result, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&first, new);
+		if (!result)
+			result = n_node;
+		else
+			last->next = n_node;
+		last = n_node;
 		lst = lst->next;
 	}
-	return (first);
+	return (result);
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strsncpy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 15:46:41 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 20:40:32 by aoo              ###   ########.fr       */
+/*   Created: 2025/03/08 20:32:55 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:41:07 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+size_t	ft_strsncpy(char **dest, char **src, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (src[i] && i < n)
 	{
-		f(i, &s[i]);
+		dest[i] = ft_strdup(src[i]);
+		if (!dest[i])
+			free_mem(dest, i);
 		i++;
 	}
+	return (i);
 }

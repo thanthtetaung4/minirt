@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 15:46:41 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 20:40:32 by aoo              ###   ########.fr       */
+/*   Created: 2024/12/23 07:38:12 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:40:57 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strndup(const char *src, int len)
 {
-	unsigned int	i;
+	char	*result;
+	int		i;
 
 	i = 0;
-	while (s[i])
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	while (src && src[i] && i < len)
 	{
-		f(i, &s[i]);
+		result[i] = src[i];
 		i++;
 	}
+	result[i] = '\0';
+	return (result);
 }

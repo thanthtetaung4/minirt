@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 13:06:17 by taung             #+#    #+#             */
-/*   Updated: 2024/06/04 20:20:49 by taung            ###   ########.fr       */
+/*   Created: 2024/05/16 16:47:20 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:40:47 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str && str[i] != '\0')
-	{
+	if (!str)
+		return (0);
+	while (str[i])
 		i++;
-	}
 	return (i);
 }

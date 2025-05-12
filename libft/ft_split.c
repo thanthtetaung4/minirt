@@ -3,107 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 20:33:48 by taung             #+#    #+#             */
-/*   Updated: 2024/12/28 20:19:27 by taung            ###   ########.fr       */
+/*   Created: 2024/05/25 14:45:48 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:38:19 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_word_count(char *s, char c)
+static	int	is_delimiter(char c, const char *delimiters)
 {
-	size_t	i;
-	size_t	count;
+	while (*delimiters)
+		if (c == *delimiters++)
+			return (1);
+	return (0);
+}
 
-	i = 0;
+int	count_word(char const *s, const char *delimiters)
+{
+	int	count;
+	int	in_word;
+
 	count = 0;
-	while (s[i])
+	in_word = 0;
+	while (*s)
 	{
-		if (s[i] == c)
-			i++;
-		else
+		if (!is_delimiter(*s, delimiters) && in_word == 0)
 		{
-			while (s[i + 1] != c && s[i + 1])
-				i++;
+			in_word = 1;
 			count++;
-			i++;
 		}
+		else if (is_delimiter(*s, delimiters))
+			in_word = 0;
+		s++;
 	}
 	return (count);
 }
 
-static char	*ft_add_word(size_t start, size_t end, char *s)
+void	free_mem(char **result, int i)
 {
-	size_t	size;
-	char	*word;
-
-	word = NULL;
-	size = end - start;
-	word = (char *)malloc((size + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	ft_strlcpy(word, s, size + 1);
-	return (word);
+	while (i >= 0)
+		free(result[i--]);
+	free(result);
 }
 
-static void	*ft_make_word(char *s, char c, size_t *j)
+static int	ft_splitndup(char **r, const char *src, int len, int i)
 {
-	size_t	start;
-	size_t	end;
+	char	*result;
+	int		j;
 
-	start = 0;
-	end = 0;
-	while (s[*j])
+	j = 0;
+	result = (char *)malloc((len + 1) * sizeof(char));
+	if (!result)
 	{
-		if (s[*j] == c)
-			(*j)++;
-		else
-		{
-			start = *j;
-			while (s[*j] && s[*j] != c)
-				(*j)++;
-			end = *j;
-			return (ft_add_word(0, end - start, s + start));
-		}
+		free_mem(r, i);
+		return (0);
 	}
-	return (NULL);
-}
-
-static void	ft_free(char **res, size_t i)
-{
-	while (i > 0)
+	while (j < len)
 	{
-		i--;
-		free(res[i]);
+		result[j] = src[j];
+		j++;
 	}
-	free(res);
+	result[j] = 0;
+	r[i] = result;
+	return (1);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char *delimiters)
 {
-	char	**res;
-	size_t	size;
-	size_t	i;
-	size_t	j;
+	char		**result;
+	const char	*start;
+	int			i;
 
 	i = 0;
-	j = 0;
-	size = ft_word_count((char *)s, c);
-	res = (char **)malloc((size + 1) * sizeof(char *));
-	if (!res)
+	if (!s)
 		return (NULL);
-	while (i < size)
+	result = (char **)malloc((count_word(s, delimiters) + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	while (*s)
 	{
-		res[i] = ft_make_word((char *)s, c, &j);
-		if (res[i] == NULL)
+		if (!is_delimiter(*s, delimiters))
 		{
-			ft_free(res, i);
-			return (NULL);
+			start = s;
+			while (*s && !is_delimiter(*s, delimiters))
+				s++;
+			if (!ft_splitndup(result, start, s - start, i++))
+				return (NULL);
 		}
-		i++;
+		else
+			s++;
 	}
-	res[size] = NULL;
-	return (res);
+	result[i] = NULL;
+	return (result);
 }

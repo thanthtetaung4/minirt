@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_uppercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 15:46:41 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 20:40:32 by aoo              ###   ########.fr       */
+/*   Created: 2024/10/29 22:38:59 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:41:41 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_uppercase(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (s[i])
+	while (str && str[i])
 	{
-		f(i, &s[i]);
+		str[i] = ft_toupper(str[i]);
 		i++;
 	}
 }

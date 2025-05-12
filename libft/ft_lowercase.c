@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lowercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 15:46:41 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 20:40:32 by aoo              ###   ########.fr       */
+/*   Created: 2024/10/29 22:43:38 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:37:23 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_lowercase(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (s[i])
+	while (str && str[i])
 	{
-		f(i, &s[i]);
+		str[i] = ft_tolower(str[i]);
 		i++;
 	}
 }

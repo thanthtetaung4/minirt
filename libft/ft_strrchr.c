@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 16:52:29 by taung             #+#    #+#             */
-/*   Updated: 2024/06/04 20:23:53 by taung            ###   ########.fr       */
+/*   Created: 2024/05/19 18:11:59 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:41:02 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*res;
+	char	*ptr;
 
-	res = 0;
-	if ((char)c == '\0')
+	ptr = 0;
+	while (*s)
 	{
-		res = &((char *)s)[ft_strlen(s)];
+		if (*s == (unsigned char)c)
+			ptr = (char *)s;
+		s++;
 	}
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			res = (char *)s;
-		s = s + 1;
-	}
-	return (res);
+	if ((unsigned char)c == '\0')
+		ptr = (char *)s;
+	return (ptr);
 }

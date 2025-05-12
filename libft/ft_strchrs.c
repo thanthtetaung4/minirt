@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strchrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 15:46:41 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 20:40:32 by aoo              ###   ########.fr       */
+/*   Created: 2025/03/16 16:31:45 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:39:50 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strchrs(char *str, char *delimeters)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i])
+	while (*str)
 	{
-		f(i, &s[i]);
-		i++;
+		if (ft_strchr(delimeters, *str))
+			return (str);
+		str++;
 	}
+	return (NULL);
 }

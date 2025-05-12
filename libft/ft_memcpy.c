@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 21:13:57 by taung             #+#    #+#             */
-/*   Updated: 2024/06/04 20:37:02 by taung            ###   ########.fr       */
+/*   Created: 2024/05/17 16:40:32 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 20:37:58 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	unsigned char	*s;
+	unsigned char	*d;
 
-	i = 0;
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	while (n > 0)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
-		n--;
-	}
+	if (!src && !dest)
+		return (dest);
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	while (n--)
+		*d++ = *s++;
 	return (dest);
 }
-
-// int main()
-// {
-// 	printf("---------ft_memcpy---------\n");
-
-// 	char src[] = "Hello";
-// 	char dest[] = "";
-// 	char *c_res = (char*)memcpy(dest,src,4);
-// 	printf("src:%s\nc-res:%s\ndest:%s\n", src,c_res,dest);
-// 	printf("dest-len: %zu, src-len: %zu\n",strlen(dest),strlen(src));
-
-// 	printf("res-addr:  %p\ndest-addr: %p\n", memcpy(dest,src,5),dest);
-
-// 	printf("---------------------------\n");
-// }

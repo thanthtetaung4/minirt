@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 13:35:24 by taung             #+#    #+#             */
-/*   Updated: 2024/06/03 13:32:45 by taung            ###   ########.fr       */
+/*   Created: 2024/05/16 13:26:00 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 17:40:38 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
+	if (c >= '0' && c <= '9')
+		return (2048);
+	return (0);
 }

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_vali.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 15:00:32 by aoo               #+#    #+#             */
-/*   Updated: 2024/12/30 05:39:13 by aoo              ###   ########.fr       */
+/*   Created: 2024/10/28 23:59:55 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 17:40:10 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+bool	ft_atoi_vali(const char *nptr, int *result)
 {
-	int	i;
-	int	sign;
+	long	i;
+	int		sign;
 
 	i = 0;
 	sign = 1;
@@ -27,10 +27,16 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		nptr++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (*nptr)
 	{
-		i = i * 10 + (*nptr - '0');
+		if (*nptr >= '0' && *nptr <= '9')
+			i = i * 10 + (*nptr - '0');
+		else
+			return (false);
 		nptr++;
 	}
-	return (i * sign);
+	if ((i * sign) > INT_MAX || (i * sign) < INT_MIN)
+		return (false);
+	*result = i * sign;
+	return (true);
 }

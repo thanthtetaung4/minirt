@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoll_vali.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 15:00:32 by aoo               #+#    #+#             */
-/*   Updated: 2024/12/30 05:39:13 by aoo              ###   ########.fr       */
+/*   Created: 2025/03/06 18:07:11 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 17:40:19 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+bool	ft_atoll_vali(const char *nptr, long long *result)
 {
-	int	i;
-	int	sign;
+	long long	i;
+	int			sign;
 
 	i = 0;
 	sign = 1;
@@ -29,8 +29,14 @@ int	ft_atoi(const char *nptr)
 	}
 	while (*nptr >= '0' && *nptr <= '9')
 	{
+		if (i > LLONG_MAX / 10 || (i == LLONG_MAX / 10 && \
+			(*nptr - '0') > LLONG_MAX % 10 + (sign == -1)))
+			return (false);
 		i = i * 10 + (*nptr - '0');
 		nptr++;
 	}
-	return (i * sign);
+	if (*nptr != '\0')
+		return (false);
+	*result = i * sign;
+	return (true);
 }

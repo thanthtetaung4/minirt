@@ -3,36 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 21:47:59 by taung             #+#    #+#             */
-/*   Updated: 2024/06/04 21:33:26 by taung            ###   ########.fr       */
+/*   Created: 2024/05/22 21:31:29 by aoo               #+#    #+#             */
+/*   Updated: 2025/03/08 23:40:19 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2, int fs1, int fs2)
 {
-	char	*res;
+	char	*result;
 	int		i;
+	int		j;
 
-	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
 	i = 0;
-	while (*s1)
-	{
-		res[i] = *s1;
-		s1++;
-		i++;
-	}
-	while (*s2)
-	{
-		res[i] = *s2;
-		s2++;
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	j = 0;
+	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (result == NULL)
+		return (NULL);
+	while (s1 && s1[i])
+		result[i++] = s1[j++];
+	j = 0;
+	while (s2 && s2[j])
+		result[i++] = s2[j++];
+	result[i] = 0;
+	if (s1 && fs1)
+		free(s1);
+	if (s2 && fs2)
+		free(s2);
+	return (result);
 }

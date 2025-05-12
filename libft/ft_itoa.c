@@ -3,71 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 18:19:32 by taung             #+#    #+#             */
-/*   Updated: 2024/06/04 20:05:37 by taung            ###   ########.fr       */
+/*   Created: 2024/05/25 15:25:00 by aoo               #+#    #+#             */
+/*   Updated: 2025/05/12 17:41:45 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-char		*ft_itoa(int n);
-static int	ft_intlen(int n);
-
-static int	ft_intlen(int n)
+static int	count_int_len(int n)
 {
-	int		len;
+	int	i;
 
-	len = 0;
-	if (n < 0)
-		len++;
+	i = 0;
 	if (n == 0)
 		return (1);
-	while (n != 0)
+	if (n < 0)
+		i++;
+	while (n)
 	{
-		n = n / 10;
-		len++;
+		n /= 10;
+		i++;
 	}
-	return (len);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	int				len;
-	unsigned int	num;
+	long	num;
+	int		len;
+	char	*result;
 
-	len = ft_intlen(n);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (0);
+	len = count_int_len(n);
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	result[len] = 0;
 	if (n == 0)
-		str[0] = '0';
-	str[len] = '\0';
+		result[0] = '0';
+	num = n;
+	if (num < 0)
+		num = -num;
+	while (num)
+	{
+		result[--len] = (num % 10) + '0';
+		num /= 10;
+	}
 	if (n < 0)
-	{
-		str[0] = '-';
-		num = -n;
-	}
-	else
-		num = n;
-	while (num != 0)
-	{
-		str[len - 1] = (num % 10) + '0';
-		num = num / 10;
-		len--;
-	}
-	return (str);
+		result[0] = '-';
+	return (result);
 }
-
-// #include <stdio.h>
-// int	main()
-// {
-// 	// printf("digit count: %i\n",digit_count(-1123));
-// 	// printf("digit mul: %i\n",	get_divider(digit_count(1123)));
-// 	printf ("itoa res:%s\n", ft_itoa(-2147483648));
-// 	printf("%i", -2147483648);
-// }
