@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 22:22:19 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 22:59:24 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ int	parser(char *filename, t_data *data)
 	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr_fd("INVALID PATH\n", 2);
-		return (0);
-	}
+		return (print_error("Error: Invalid path!\n"));
 	data->scene = malloc(sizeof(char *) * (count_row(filename) + 1));
 	if (!data->scene)
-		return (0);
+		return (print_error("Error: Malloc failed(scene)!\n"));
 	res = get_next_line(fd);
 	while (res)
 	{
@@ -37,8 +34,7 @@ int	parser(char *filename, t_data *data)
 		i++;
 	}
 	data->scene[i] = NULL;
-	close(fd);
-	return (1);
+	return (close(fd));
 }
 
 int	parser_helper(char **color_split, t_rgb *color)
@@ -64,7 +60,7 @@ int parse_ambient(char *line, t_ambient *ambient)
 	char	**split;
 	char	**color_split;
 
-	split = ft_split(line, " ");
+	split = ft_split(line, " \t");
 	color_split = ft_split(split[2], ",");
 	if (!split)
 		return (0);
