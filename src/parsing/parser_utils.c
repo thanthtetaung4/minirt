@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_ctrl.c                                         :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 01:46:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 12:07:08 by taung            ###   ########.fr       */
+/*   Created: 2025/05/13 12:37:25 by taung             #+#    #+#             */
+/*   Updated: 2025/05/13 12:37:36 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	close_win(t_data *data)
+int	count_row(const char *path)
 {
-	if (data->mlx && data->mlx_win)
+	int		fd;
+	char	*res;
+	int		i;
+
+	i = 0;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
 	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		data->mlx_win = NULL;
-		ft_putstr_fd("U QUIT GAME OVER!\n", 1);
-		free_all(data);
-		exit(0);
+		ft_putstr_fd("INVALID PATH\n", 2);
+		return (0);
 	}
-	return (0);
+	res = get_next_line(fd);
+	if (!res)
+		return (0);
+	while (res)
+	{
+		free(res);
+		res = NULL;
+		i++;
+		res = get_next_line(fd);
+	}
+	close(fd);
+	free(res);
+	return (i);
 }

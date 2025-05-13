@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_ctrl.c                                         :+:      :+:    :+:   */
+/*   utils_one.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 01:46:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 12:07:08 by taung            ###   ########.fr       */
+/*   Created: 2025/05/13 13:06:36 by taung             #+#    #+#             */
+/*   Updated: 2025/05/13 14:48:12 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	close_win(t_data *data)
+int	print_2d_array(char **arr)
 {
-	if (data->mlx && data->mlx_win)
+	int i = 0;
+
+	printf("Printing 2D array:\n");
+	while (arr[i])
 	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		data->mlx_win = NULL;
-		ft_putstr_fd("U QUIT GAME OVER!\n", 1);
-		free_all(data);
-		exit(0);
+		printf("%s\n", arr[i]);
+		i++;
 	}
-	return (0);
+	return (1);
 }
