@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:37:25 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 12:37:36 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 01:27:07 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ int	count_row(const char *path)
 	close(fd);
 	free(res);
 	return (i);
+}
+
+int	check_range(float value, float min, float max)
+{
+	if (value < min || value > max)
+		return (1);
+	return (0);
 }

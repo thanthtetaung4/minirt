@@ -6,11 +6,50 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 01:03:19 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 03:30:52 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+int	parser_rgb(char *str, t_rgb *color)
+{
+	char	**rgb;
+
+	rgb = ft_split(str, ",");
+	if (ft_strslen(rgb) != 3)
+		return (1);
+	if (ft_atoi_vali(rgb[0], &color->r) && !check_range(color->r, 0, 255))
+	{
+		if (ft_atoi_vali(rgb[1], &color->g) && !check_range(color->g, 0, 255))
+		{
+			if (ft_atoi_vali(rgb[2], &color->b) && !check_range(color->b, 0, 255))
+				return (0);
+		}
+	}
+	return (1);
+}
+
+int	parser_xyz(char *str, t_xyz *origin, int vector)
+{
+	char	**xyz;
+
+	xyz = ft_split(str, ",");
+	if (ft_strslen(xyz) != 3)
+		return (1);
+	if (ft_atof_vali(xyz[0], &origin->x) && ft_atof_vali(xyz[1], &origin->y) &&
+		ft_atof_vali(xyz[2], &origin->z))
+	{
+		if (vector)
+		{
+			if (check_range(origin->x, -1, 1) || check_range(origin->y, -1, 1)
+			|| check_range(origin->z, -1, 1))
+				return (1);
+		}
+		return (0);
+	}
+	return (1);
+}
 
 int	scene_parser(char *res, t_data *data)
 {

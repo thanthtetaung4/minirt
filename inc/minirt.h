@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 00:24:07 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 03:29:04 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_light
 typedef struct s_sphere
 {
 	t_xyz	origin;
-	float	radius;
+	float	diameter;
 	t_rgb	color;
 }	t_sphere;
 
@@ -75,7 +75,7 @@ typedef struct s_cylinder
 {
 	t_xyz	origin;
 	t_xyz	v_origin;
-	float	radius;
+	float	diameter;
 	float	height;
 	t_rgb	color;
 }	t_cylinder;
@@ -111,6 +111,9 @@ void	free_scene(t_data *data);
 void	free_split(char **split);
 
 // Parsing functions
+int	parser_rgb(char *str, t_rgb *color);
+int	parser_xyz(char *str, t_xyz *origin, int vector);
+
 int	parser(char *filename, t_data *data);
 int	count_row(const char *path);
 int parse_ambient(char *line, t_ambient *ambient);
@@ -119,6 +122,9 @@ int parse_camera(char *line, t_camera *camera);
 int parse_plane(char *line, t_plane *plane);
 int parse_sphere(char *line, t_sphere *sphere);
 int parse_cylinder(char *line, t_cylinder *cylinder);
+
+//	Parsing Utility
+int	check_range(float value, float min, float max);
 
 // Utility functions
 int	print_2d_array(char **arr);

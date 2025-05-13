@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 01:03:51 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 03:29:25 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	print_error(char *msg)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-
+	t_rgb	color;
+	t_xyz	origin;
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
-	// 	return (error_exit("Error: Invalid file!\n"));
+	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
 
 	if (parser("test.rt", &data))
