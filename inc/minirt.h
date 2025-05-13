@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 15:27:49 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 20:05:22 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,15 @@ typedef struct s_data
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light	light;
-	t_sphere	sphere;
+	t_sphere	sphere;int	light_ratio;
 	t_plane	plane;
 	t_cylinder	cylinder;
 	int	ambient_count;
 	int	camera_count;
 	int	light_count;
+	int	sphere_count;
+	int	plane_count;
+	int	cylinder_count;
 }	t_data;
 
 int	handle_keypress(int keysym, t_data *data);
