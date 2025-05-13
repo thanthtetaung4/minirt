@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:07:39 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 14:51:30 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 20:41:27 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,18 @@ void	free_all(t_data *data)
 		free_mlx(data);
 	if (data->scene)
 		free_scene(data);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
+	free(split);
 }

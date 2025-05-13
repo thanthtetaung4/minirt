@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:46:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 12:07:08 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 20:11:32 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	close_win(t_data *data)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		data->mlx_win = NULL;
-		ft_putstr_fd("U QUIT GAME OVER!\n", 1);
+		ft_putstr_fd("U CLOSE THE WINDOW!\n", 1);
 		free_all(data);
 		exit(0);
 	}

@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:50:09 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 20:05:35 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 21:05:00 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void init_data(t_data *data)
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->scene = NULL;
+
 }

@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 20:05:22 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 22:00:31 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_rgb
 typedef struct s_ambient
 {
 	float	ratio;
-	int	color;
+	t_rgb	color;
 }	t_ambient;
 
 typedef struct s_camera
@@ -107,10 +107,12 @@ int	close_win(t_data *data);
 // Free functions
 void	free_all(t_data *data);
 void	free_scene(t_data *data);
+void	free_split(char **split);
 
 // Parsing functions
 int	parser(char *filename, t_data *data);
 int	count_row(const char *path);
+int parse_ambient(char *line, t_ambient *ambient);
 
 // Utility functions
 int	print_2d_array(char **arr);
