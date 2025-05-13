@@ -21,7 +21,9 @@ UTILS_PATH = ./src/utils
 
 SRCS = src/print.c src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
 		$(WIN_CTRL_PATH)/win_ctrl.c $(FREE_PATH)/ft_free.c $(PARSING_PATH)/parser.c \
-		$(PARSING_PATH)/parser_utils.c $(UTILS_PATH)/utils_one.c
+		$(PARSING_PATH)/parser_utils.c $(PARSING_PATH)/ambient_parser.c $(PARSING_PATH)/light_parser.c \
+		$(PARSING_PATH)/camera_parser.c $(PARSING_PATH)/sphere_parser.c $(PARSING_PATH)/cylinder_parser.c \
+		$(PARSING_PATH)/plane_parser.c $(UTILS_PATH)/utils_one.c
 OBJS = $(SRCS:.c=.o)
 
 # Compiler

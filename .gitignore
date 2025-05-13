@@ -53,3 +53,7 @@ dkms.conf
 
 #mlx
 /mlx
+
+/minirt
+
+**/.vscode/
