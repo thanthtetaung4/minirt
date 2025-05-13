@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:33:34 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/13 20:54:23 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 00:38:50 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
-float	ft_atof(const char *str);
+int		ft_atof_vali(const char *str, float *result);
 int		is_quote(char *q_chars, char c, int *in_quote);
 
 typedef struct s_list

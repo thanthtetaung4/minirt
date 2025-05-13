@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"minirt.h": "c",
-		"x.h": "c"
+		"x.h": "c",
+		"libft.h": "c",
+		"unistd.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 22:50:57 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/14 01:34:37 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_light
 typedef struct s_sphere
 {
 	t_xyz	origin;
-	float	radius;
+	float	diameter;
 	t_rgb	color;
 }	t_sphere;
 
@@ -75,7 +75,7 @@ typedef struct s_cylinder
 {
 	t_xyz	origin;
 	t_xyz	v_origin;
-	float	radius;
+	float	diameter;
 	float	height;
 	t_rgb	color;
 }	t_cylinder;
@@ -108,9 +108,15 @@ void	free_scene(t_data *data);
 void	free_split(char **split);
 
 // Parsing functions
+int	parser_rgb(char *str, t_rgb *color);
+int	parser_xyz(char *str, t_xyz *origin, int vector);
+
 int	parser(char *filename, t_data *data);
 int	count_row(const char *path);
 int parse_ambient(char *line, t_ambient *ambient);
+
+//	Parsing Utility
+int	check_range(float value, float min, float max);
 
 // Utility functions
 int	print_2d_array(char **arr);

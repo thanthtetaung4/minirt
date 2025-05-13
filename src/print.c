@@ -50,7 +50,7 @@ void	print_sphere(t_sphere sphere)
 {
 	printf("sphere : ");
 	print_xyz(sphere.origin);
-	printf(", radius - %f, ", sphere.radius);
+	printf(", diameter - %f, ", sphere.diameter);
 	print_rgb(sphere.color);
 	printf("\n");
 }
@@ -72,7 +72,7 @@ void	print_cylinder(t_cylinder cylinder)
 	print_xyz(cylinder.origin);
 	printf(", ");
 	print_xyz(cylinder.v_origin);
-	printf(", radius - %f, height - %f, ", cylinder.radius, cylinder.height);
+	printf(", diameter - %f, height - %f, ", cylinder.diameter, cylinder.height);
 	print_rgb(cylinder.color);
 	printf("\n");
 }
