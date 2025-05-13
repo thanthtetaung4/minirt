@@ -13,7 +13,7 @@ int	print_2d_array(char **arr)
 
 void	print_xyz(t_xyz origin)
 {
-	printf("xyz - [%f, %f, %f]", origin.x, origin.y, origin.z);	
+	printf("xyz - [%f, %f, %f]", origin.x, origin.y, origin.z);
 }
 
 void	print_rgb(t_rgb color)
@@ -87,7 +87,7 @@ void	print_data(t_data data)
 	print_ambient(data.ambient);
 	print_camera(data.camera);
 	print_light(data.light);
-	print_sphere(data.sphere);
+	ft_lstiter(data.spheres, print_sphere);
 	print_plane(data.plane);
 	print_cylinder(data.cylinder);
 	printf("ambient_count : %d\ncamera_count : %d\nlight_count : %d\n", data.ambient_count, data.camera_count, data.light_count);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 03:57:14 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/14 05:36:53 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
+# include <limits.h>
 
 typedef struct s_xyz
 {
@@ -91,7 +92,10 @@ typedef struct s_data
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
-	t_sphere	sphere;
+	t_list		*spheres;
+	// t_list		*planes;
+	// t_list		*cylinders;
+	// t_sphere	*sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
 	int			ambient_count;
@@ -120,7 +124,7 @@ int parse_ambient(char *line, t_ambient *ambient);
 int parse_light(char *line, t_light *light);
 int parse_camera(char *line, t_camera *camera);
 int parse_plane(char *line, t_plane *plane);
-int parse_sphere(char *line, t_sphere *sphere);
+int parse_sphere(char *line, t_list **spheres);
 int parse_cylinder(char *line, t_cylinder *cylinder);
 
 //	Parsing Utility

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 04:00:47 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/14 05:36:20 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	object_parser(char *res, t_data *data)
 	split = ft_split(res, " \t\n");
 	if (ft_strcmp(split[0], "sp") == 0)
 	{
-		if (parse_sphere(res, &data->sphere))
+		if (parse_sphere(res, &data->spheres))
 			return (print_error("Error: Invalid sphere!\n"));
 		data->sphere_count++;
 	}
