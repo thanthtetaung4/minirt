@@ -46,12 +46,15 @@ void	print_light(t_light light)
 	printf("\n");
 }
 
-void	print_sphere(t_sphere sphere)
+void	print_sphere(void *data)
 {
+	t_sphere	*sphere;
+
+	sphere = (t_sphere *)data;
 	printf("sphere : ");
-	print_xyz(sphere.origin);
-	printf(", diameter - %f, ", sphere.diameter);
-	print_rgb(sphere.color);
+	print_xyz(sphere->origin);
+	printf(", diameter - %f, ", sphere->diameter);
+	print_rgb(sphere->color);
 	printf("\n");
 }
 
@@ -87,7 +90,8 @@ void	print_data(t_data data)
 	print_ambient(data.ambient);
 	print_camera(data.camera);
 	print_light(data.light);
-	print_sphere(data.sphere);
+	ft_lstiter(data.spheres, print_sphere);
+	// print_sphere(data.sphere);
 	print_plane(data.plane);
 	print_cylinder(data.cylinder);
 	printf("ambient_count : %d\ncamera_count : %d\nlight_count : %d\n", data.ambient_count, data.camera_count, data.light_count);

@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 03:57:14 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/14 06:06:40 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_data
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
-	t_sphere	sphere;
+	t_list		*spheres;
 	t_plane		plane;
 	t_cylinder	cylinder;
 	int			ambient_count;
@@ -120,7 +120,7 @@ int parse_ambient(char *line, t_ambient *ambient);
 int parse_light(char *line, t_light *light);
 int parse_camera(char *line, t_camera *camera);
 int parse_plane(char *line, t_plane *plane);
-int parse_sphere(char *line, t_sphere *sphere);
+int parse_sphere(char *line, t_list **spheres);
 int parse_cylinder(char *line, t_cylinder *cylinder);
 
 //	Parsing Utility
@@ -139,7 +139,7 @@ void	print_rgb(t_rgb color);
 void	print_ambient(t_ambient amb);
 void	print_camera(t_camera camera);
 void	print_light(t_light light);
-void	print_sphere(t_sphere sphere);
+void	print_sphere(void *data);
 void	print_plane(t_plane plane);
 void	print_cylinder(t_cylinder cylinder);
 void	print_data(t_data data);
