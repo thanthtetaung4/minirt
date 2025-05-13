@@ -7,8 +7,7 @@ MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
-# CFLAGS =
+CFLAGS = #-Wall -Wextra -Werror
 
 # Source and object files
 MAP_PATH = ./src/map
@@ -20,7 +19,7 @@ FREE_PATH = ./src/free
 PARSING_PATH = ./src/parsing
 UTILS_PATH = ./src/utils
 
-SRCS = src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
+SRCS = src/print.c src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
 		$(WIN_CTRL_PATH)/win_ctrl.c $(FREE_PATH)/ft_free.c $(PARSING_PATH)/parser.c \
 		$(PARSING_PATH)/parser_utils.c $(UTILS_PATH)/utils_one.c
 OBJS = $(SRCS:.c=.o)
