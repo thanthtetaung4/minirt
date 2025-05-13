@@ -3,60 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ambient_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 01:01:14 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 04:12:18 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	parser_helper(char **color_split, t_rgb *color)
-{
-	if (ft_atoi_vali(color_split[0], (&color->r)) == 0 ||
-		ft_atoi_vali(color_split[1], (&color->g)) == 0 ||
-		ft_atoi_vali(color_split[2], (&color->b)) == 0)
-	{
-		free_split(color_split);
-		return (0);
-	}
-	return (1);
-}
-
-void free_helper(char **split, char **color_split)
-{
-	free_split(split);
-	free_split(color_split);
-}
-
 int parse_ambient(char *line, t_ambient *ambient)
 {
 	char	**split;
-	char	**color_split;
 
-	printf("line: %s\n", line);
 	split = ft_split(line, " \t\n");
-	print_2d_array(split);
-	color_split = ft_split(split[2], ",");
-	if (!split)
+	if (!split || !*split)
 		return (1);
-	if (ft_strcmp(split[0], "A") != 0 || !split[1] || !split[2])
-	{
-		free_helper(split, color_split);
-		return (1);
-	}
-	ambient->ratio = ft_atof(split[1]);
-	if (ambient->ratio < 0 || ambient->ratio > 1)
-	{
-		free_helper(split, color_split);
-		return (1);
-	}
-	if (parser_helper(color_split, &ambient->color) == 0)
-	{
-		free_split(split);
-		return (1);
-	}
-	free_helper(split, color_split);
+	if (ft_strslen(split) != 3 || !ft_atof_vali(split[1], &ambient->ratio) ||
+		check_range(ambient->ratio, 0.0, 1.0))
+		return (free_strs(split), 1);
+	if (parse_rgb(split[2], &ambient->color))
+		return (free_strs(split), 1);
+	free_strs(split);
 	return (0);
 }

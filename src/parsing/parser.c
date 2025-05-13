@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 03:30:52 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 04:00:47 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	parser_rgb(char *str, t_rgb *color)
+int	parse_rgb(char *str, t_rgb *color)
 {
 	char	**rgb;
 
@@ -24,13 +24,14 @@ int	parser_rgb(char *str, t_rgb *color)
 		if (ft_atoi_vali(rgb[1], &color->g) && !check_range(color->g, 0, 255))
 		{
 			if (ft_atoi_vali(rgb[2], &color->b) && !check_range(color->b, 0, 255))
-				return (0);
+				return (free_strs(rgb), 0);
 		}
 	}
+	free_strs(rgb);
 	return (1);
 }
 
-int	parser_xyz(char *str, t_xyz *origin, int vector)
+int	parse_xyz(char *str, t_xyz *origin, int vector)
 {
 	char	**xyz;
 

@@ -3,6 +3,7 @@
 		"minirt.h": "c",
 		"x.h": "c",
 		"libft.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"get_next_line.h": "c"
 	}
 }

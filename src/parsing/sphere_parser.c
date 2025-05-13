@@ -3,58 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 00:16:33 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 04:16:27 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-// int	parser_helper(char **color_split, t_rgb *color)
-// {
-// 	if (ft_atoi_vali(color_split[0], (&color->r)) == 0 ||
-// 		ft_atoi_vali(color_split[1], (&color->g)) == 0 ||
-// 		ft_atoi_vali(color_split[2], (&color->b)) == 0)
-// 	{
-// 		free_split(color_split);
-// 		return (0);
-// 	}
-// 	return (1);
-// }
-
-// void free_helper(char **split, char **color_split)
-// {
-// 	free_split(split);
-// 	free_split(color_split);
-// }
-
 int parse_sphere(char *line, t_sphere *sphere)
 {
-	// char	**split;
-	// char	**color_split;
+	char	**split;
 
-	// split = ft_split(line, " \t");
-	// color_split = ft_split(split[2], ",");
-	// if (!split)
-	// 	return (1);
-	// if (ft_strcmp(split[0], "A") != 0 || !split[1] || !split[2])
-	// {
-	// 	free_helper(split, color_split);
-	// 	return (1);
-	// }
-	// ambient->ratio = ft_atof(split[1]);
-	// if (ambient->ratio < 0 || ambient->ratio > 1)
-	// {
-	// 	free_helper(split, color_split);
-	// 	return (1);
-	// }
-	// if (parser_helper(color_split, &ambient->color) == 0)
-	// {
-	// 	free_helper(split, color_split);
-	// 	return (1);
-	// }
-	// free_helper(split, color_split);
+	split = ft_split(line, " \t\n");
+	if (!split || !*split)
+		return (1);
+	if (ft_strslen(split) != 4 || parse_xyz(split[1], &sphere->origin, 0) || 
+		!ft_atof_vali(split[2], &sphere->diameter) ||
+		parse_rgb(split[3], &sphere->color))
+		return (free_strs(split), 1);
+	free_strs(split);
 	return (0);
 }

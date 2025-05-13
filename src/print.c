@@ -1,4 +1,4 @@
-#include "../inc/print.h"
+#include "../inc/minirt.h"
 
 int	print_2d_array(char **arr)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 03:29:04 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/14 03:57:14 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ void	free_scene(t_data *data);
 void	free_split(char **split);
 
 // Parsing functions
-int	parser_rgb(char *str, t_rgb *color);
-int	parser_xyz(char *str, t_xyz *origin, int vector);
+int	parse_rgb(char *str, t_rgb *color);
+int	parse_xyz(char *str, t_xyz *origin, int vector);
 
 int	parser(char *filename, t_data *data);
 int	count_row(const char *path);
@@ -132,5 +132,16 @@ int	print_2d_array(char **arr);
 
 // Error
 int	print_error(char *msg);
+
+// Print data
+void	print_xyz(t_xyz origin);
+void	print_rgb(t_rgb color);
+void	print_ambient(t_ambient amb);
+void	print_camera(t_camera camera);
+void	print_light(t_light light);
+void	print_sphere(t_sphere sphere);
+void	print_plane(t_plane plane);
+void	print_cylinder(t_cylinder cylinder);
+void	print_data(t_data data);
 
 #endif
