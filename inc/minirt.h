@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 22:00:31 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/13 22:31:35 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 
 typedef struct s_xyz
 {
@@ -45,7 +46,7 @@ typedef struct s_ambient
 typedef struct s_camera
 {
 	t_xyz	origin;
-	t_xyz	orientation;
+	t_xyz	v_origin;
 	float	fov;
 }	t_camera;
 
@@ -66,17 +67,17 @@ typedef struct s_sphere
 typedef struct s_plane
 {
 	t_xyz	origin;
-	t_xyz	orientation;
-	int	color;
+	t_xyz	v_origin;
+	t_rgb	color;
 }	t_plane;
 
 typedef struct s_cylinder
 {
 	t_xyz	origin;
-	t_xyz	orientation;
+	t_xyz	v_origin;
 	float	radius;
 	float	height;
-	int	color;
+	t_rgb	color;
 }	t_cylinder;
 
 typedef struct s_data
