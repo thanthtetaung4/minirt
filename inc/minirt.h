@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 12:55:19 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/15 13:17:00 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ typedef struct s_data
 	t_camera	camera;
 	t_light		light;
 	t_list		*spheres;
-	// t_list		*planes;
-	// t_list		*cylinders;
+	t_list		*planes;
+	t_list		*cylinders;
 	// t_sphere	*sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
@@ -123,9 +123,9 @@ int	count_row(const char *path);
 int parse_ambient(char *line, t_ambient *ambient);
 int parse_light(char *line, t_light *light);
 int parse_camera(char *line, t_camera *camera);
-int parse_plane(char *line, t_plane *plane);
+int parse_plane(char *line, t_list **planes);
 int parse_sphere(char *line, t_list **spheres);
-int parse_cylinder(char *line, t_cylinder *cylinder);
+int parse_cylinder(char *line, t_list **cylinders);
 
 //	Parsing Utility
 int	check_range(float value, float min, float max);
@@ -144,8 +144,8 @@ void	print_ambient(t_ambient amb);
 void	print_camera(t_camera camera);
 void	print_light(t_light light);
 void	print_sphere(void *sphere);
-void	print_plane(t_plane plane);
-void	print_cylinder(t_cylinder cylinder);
+void	print_plane(void *plane);
+void	print_cylinder(void *cylinder);
 void	print_data(t_data data);
 
 #endif
