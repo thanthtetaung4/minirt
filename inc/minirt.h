@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 05:36:53 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/15 12:55:19 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	print_rgb(t_rgb color);
 void	print_ambient(t_ambient amb);
 void	print_camera(t_camera camera);
 void	print_light(t_light light);
-void	print_sphere(t_sphere sphere);
+void	print_sphere(void *sphere);
 void	print_plane(t_plane plane);
 void	print_cylinder(t_cylinder cylinder);
 void	print_data(t_data data);

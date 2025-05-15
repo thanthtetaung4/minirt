@@ -46,12 +46,12 @@ void	print_light(t_light light)
 	printf("\n");
 }
 
-void	print_sphere(t_sphere sphere)
+void	print_sphere(void *sphere)
 {
 	printf("sphere : ");
-	print_xyz(sphere.origin);
-	printf(", diameter - %f, ", sphere.diameter);
-	print_rgb(sphere.color);
+	print_xyz(((t_sphere *)sphere)->origin);
+	printf(", diameter - %f, ", ((t_sphere *)sphere)->diameter);
+	print_rgb(((t_sphere *)sphere)->color);
 	printf("\n");
 }
 
