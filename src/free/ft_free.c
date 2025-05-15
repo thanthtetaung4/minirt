@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:07:39 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:50:05 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 13:55:12 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	free_all(t_data *data)
 	if (data->scene)
 		free_scene(data);
 	if (data->spheres)
-		ft_lstclear(data->spheres, free);
+		ft_lstclear(&data->spheres, free);
 	if (data->planes)
-		ft_lstclear(data->planes, free);
+		ft_lstclear(&data->planes, free);
 	if (data->cylinders)
-		ft_lstclear(data->cylinders, free);
+		ft_lstclear(&data->cylinders, free);
 }
 
 void	free_split(char **split)

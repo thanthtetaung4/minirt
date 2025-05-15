@@ -48,9 +48,6 @@ void	print_light(t_light light)
 
 void	print_sphere(void *sphere)
 {
-	t_sphere	*sphere;
-
-	sphere = (t_sphere *)data;
 	printf("sphere : ");
 	print_xyz(((t_sphere *)sphere)->origin);
 	printf(", diameter - %f, ", ((t_sphere *)sphere)->diameter);

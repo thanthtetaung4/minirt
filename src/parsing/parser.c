@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:38:21 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 14:02:38 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 	if (ft_atof_vali(xyz[0], &origin->x) && ft_atof_vali(xyz[1], &origin->y) &&
 		ft_atof_vali(xyz[2], &origin->z))
 	{
+		free_strs(xyz);
 		if (vector)
 		{
 			if (check_range(origin->x, -1, 1) || check_range(origin->y, -1, 1)
@@ -49,6 +50,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 		}
 		return (0);
 	}
+	free_strs(xyz);
 	return (1);
 }
 
@@ -129,5 +131,6 @@ int	parser(char *filename, t_data *data)
 		res = get_next_line(fd);
 		i++;
 	}
+	free(res);
 	return (close(fd) && 0);
 }
