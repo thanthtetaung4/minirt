@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:37:09 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 13:43:29 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ typedef struct s_data
 	t_list		*spheres;
 	t_list		*planes;
 	t_list		*cylinders;
-	// t_sphere	*sphere;
-	t_plane		plane;
-	t_cylinder	cylinder;
 	int			ambient_count;
 	int			camera_count;
 	int			light_count;

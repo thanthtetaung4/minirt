@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:07:39 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:31:55 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 13:50:05 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	free_all(t_data *data)
 		free_mlx(data);
 	if (data->scene)
 		free_scene(data);
+	if (data->spheres)
+		ft_lstclear(data->spheres, free);
+	if (data->planes)
+		ft_lstclear(data->planes, free);
+	if (data->cylinders)
+		ft_lstclear(data->cylinders, free);
 }
 
 void	free_split(char **split)

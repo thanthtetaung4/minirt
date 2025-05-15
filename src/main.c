@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:38:00 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 13:46:54 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int	main(int argc, char **argv)
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
-
 	if (parser("test.rt", &data))
-		return (print_error("Error: Parsing!\n"));
+		return (free_all(&data), print_error("Error: Parsing!\n"));
 	print_data(data);
 	// t_sphere *sphere = (t_sphere *)(data.spheres->data);
 	// printf("Sphere color.r: %d\n", sphere->color.r);
