@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 05:57:33 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/15 13:38:21 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,19 @@ int	object_parser(char *res, t_data *data)
 	split = ft_split(res, " \t\n");
 	if (ft_strcmp(split[0], "sp") == 0)
 	{
-		// ft_lstadd_back(&data->sphere, ft_lstnew())
 		if (parse_sphere(res, &data->spheres))
 			return (print_error("Error: Invalid sphere!\n"));
 		data->sphere_count++;
 	}
 	else if (ft_strcmp(split[0], "pl") == 0)
 	{
-		if (parse_plane(res, &data->plane))
+		if (parse_plane(res, &data->planes))
 			return (print_error("Error: Invalid plane!\n"));
 		data->plane_count++;
 	}
 	else if (ft_strcmp(split[0], "cy") == 0)
 	{
-		if (parse_cylinder(res, &data->cylinder))
+		if (parse_cylinder(res, &data->cylinders))
 			return (print_error("Error: Invalid cylinder!\n"));
 		data->cylinder_count++;
 	}
@@ -124,12 +123,11 @@ int	parser(char *filename, t_data *data)
 		if (scene_parser(res, data) != 0 || object_parser(res, data) != 0)
 		{
 			free(res);
-			break;
+			return (close(fd) || 1);
 		}
 		free(res);
 		res = get_next_line(fd);
 		i++;
 	}
-	close(fd);
-	return (0);
+	return (close(fd) && 0);
 }

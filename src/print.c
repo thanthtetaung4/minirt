@@ -13,7 +13,7 @@ int	print_2d_array(char **arr)
 
 void	print_xyz(t_xyz origin)
 {
-	printf("xyz - [%f, %f, %f]", origin.x, origin.y, origin.z);	
+	printf("xyz - [%f, %f, %f]", origin.x, origin.y, origin.z);
 }
 
 void	print_rgb(t_rgb color)
@@ -46,37 +46,37 @@ void	print_light(t_light light)
 	printf("\n");
 }
 
-void	print_sphere(void *data)
+void	print_sphere(void *sphere)
 {
 	t_sphere	*sphere;
 
 	sphere = (t_sphere *)data;
 	printf("sphere : ");
-	print_xyz(sphere->origin);
-	printf(", diameter - %f, ", sphere->diameter);
-	print_rgb(sphere->color);
+	print_xyz(((t_sphere *)sphere)->origin);
+	printf(", diameter - %f, ", ((t_sphere *)sphere)->diameter);
+	print_rgb(((t_sphere *)sphere)->color);
 	printf("\n");
 }
 
-void	print_plane(t_plane plane)
+void	print_plane(void *plane)
 {
 	printf("plane : ");
-	print_xyz(plane.origin);
+	print_xyz(((t_plane*)plane)->origin);
 	printf(", ");
-	print_xyz(plane.v_origin);
+	print_xyz(((t_plane*)plane)->v_origin);
 	printf(", ");
-	print_rgb(plane.color);
+	print_rgb(((t_plane*)plane)->color);
 	printf("\n");
 }
 
-void	print_cylinder(t_cylinder cylinder)
+void	print_cylinder(void *cylinder)
 {
 	printf("cylinder : ");
-	print_xyz(cylinder.origin);
+	print_xyz(((t_cylinder*)cylinder)->origin);
 	printf(", ");
-	print_xyz(cylinder.v_origin);
-	printf(", diameter - %f, height - %f, ", cylinder.diameter, cylinder.height);
-	print_rgb(cylinder.color);
+	print_xyz(((t_cylinder*)cylinder)->v_origin);
+	printf(", diameter - %f, height - %f, ", ((t_cylinder*)cylinder)->diameter, ((t_cylinder*)cylinder)->height);
+	print_rgb(((t_cylinder*)cylinder)->color);
 	printf("\n");
 }
 
@@ -91,8 +91,7 @@ void	print_data(t_data data)
 	print_camera(data.camera);
 	print_light(data.light);
 	ft_lstiter(data.spheres, print_sphere);
-	// print_sphere(data.sphere);
-	print_plane(data.plane);
-	print_cylinder(data.cylinder);
+	ft_lstiter(data.planes, print_plane);
+	ft_lstiter(data.cylinders, print_cylinder);
 	printf("ambient_count : %d\ncamera_count : %d\nlight_count : %d\n", data.ambient_count, data.camera_count, data.light_count);
 }
