@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:29 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/16 15:51:46 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,9 @@ void	print_rgb(t_rgb color);
 void	print_ambient(t_ambient amb);
 void	print_camera(t_camera camera);
 void	print_light(t_light light);
-void	print_sphere(void *sphere);
-void	print_plane(void *plane);
-void	print_cylinder(void *cylinder);
+void	print_sphere(void *data);
+void	print_plane(void *data);
+void	print_cylinder(void *data);
 void	print_data(t_data data);
 
 #endif
