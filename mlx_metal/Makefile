@@ -10,7 +10,7 @@ MAIN_OBJ = $(MAIN_SRC:.swift=.o)
 # C source files
 C_SRC = mlx_xpm.c mlx_png.c mlx_string_put.c
 C_OBJ = $(C_SRC:.c=.o)
-CFLAGS = -O3
+CFLAGS = -O3 -w
 
 FNAME = libmlx
 NAME = libmlx.dylib
@@ -29,7 +29,7 @@ $(NAME): $(MODULE_OBJ) $(MAIN_OBJ) $(C_OBJ)
 
 # Compile module Swift files and emit modules
 %.o %.swiftmodule: %.swift
-	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $(@:.swiftmodule=.o) -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
+	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $(@:.swiftmodule=.o) -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<) 2>/dev/null
 
 # Compile interface.swift after modules are available
 interface.o: interface.swift $(MODULE_MOD)

@@ -49,7 +49,7 @@ all: $(NAME)
 
 $(NAME): $(MLX_LIB) $(OBJS)  $(LIBFT)
 	@echo "$(NAME) compiling..."
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) $(LIBFT) $(MLX_LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) $(LIBFT) $(MLX_LIB) -o $(NAME)
 
 # Clone and compile the MiniLibX library
 $(MLX_LIB):
