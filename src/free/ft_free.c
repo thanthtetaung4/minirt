@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:07:39 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:55:12 by taung            ###   ########.fr       */
+/*   Updated: 2025/05/21 03:11:52 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_mlx(t_data *data)
 	{
 		if (data->mlx_win)
 			mlx_destroy_window(data->mlx, data->mlx_win);
-		mlx_destroy_display(data->mlx);
+		// mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		data->mlx = NULL;
 		data->mlx_win = NULL;

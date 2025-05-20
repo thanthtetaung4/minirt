@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:33:34 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/14 00:38:50 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/21 03:04:30 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdbool.h>
 # include <limits.h>
 # include <stdio.h>
 
@@ -25,10 +24,10 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	free_mem(char **result, int i);
 void	free_str(char **str);
 void	free_strs(char **strs);
-bool	ft_atoi_base(char *str, char *base, int *value);
+int		ft_atoi_base(char *str, char *base, int *value);
 int		ft_atoi(const char *nptr);
-bool	ft_atoi_vali(const char *nptr, int *result);
-bool	ft_atoll_vali(const char *nptr, long long *result);
+int		ft_atoi_vali(const char *nptr, int *result);
+int		ft_atoll_vali(const char *nptr, long long *result);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

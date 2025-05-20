@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:05:21 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/13 20:27:16 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/21 03:06:24 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_power(char *base)
 	return (power);
 }
 
-bool	ft_atoi_base(char *str, char *base, int *value)
+int	ft_atoi_base(char *str, char *base, int *value)
 {
 	int	power;
 	int	sign;
@@ -73,9 +73,9 @@ bool	ft_atoi_base(char *str, char *base, int *value)
 	while (*str)
 	{
 		if (find_value(*str, base) < 0)
-			return (*value = 0, false);
+			return (*value = 0, 0);
 		i = i * power + find_value(*str, base);
 		str++;
 	}
-	return (*value = i * sign, true);
+	return (*value = i * sign, 1);
 }

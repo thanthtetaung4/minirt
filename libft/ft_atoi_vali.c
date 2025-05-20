@@ -6,13 +6,13 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:59:55 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/12 17:40:10 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/21 03:06:29 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_atoi_vali(const char *nptr, int *result)
+int	ft_atoi_vali(const char *nptr, int *result)
 {
 	long	i;
 	int		sign;
@@ -32,11 +32,11 @@ bool	ft_atoi_vali(const char *nptr, int *result)
 		if (*nptr >= '0' && *nptr <= '9')
 			i = i * 10 + (*nptr - '0');
 		else
-			return (false);
+			return (0);
 		nptr++;
 	}
 	if ((i * sign) > INT_MAX || (i * sign) < INT_MIN)
-		return (false);
+		return (0);
 	*result = i * sign;
-	return (true);
+	return (1);
 }

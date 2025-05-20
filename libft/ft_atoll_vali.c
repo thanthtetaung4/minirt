@@ -6,13 +6,13 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:07:11 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/14 00:13:46 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/21 03:06:33 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_atoll_vali(const char *nptr, long long *result)
+int	ft_atoll_vali(const char *nptr, long long *result)
 {
 	long long	i;
 	int			sign;
@@ -31,12 +31,12 @@ bool	ft_atoll_vali(const char *nptr, long long *result)
 	{
 		if (i > LLONG_MAX / 10 || (i == LLONG_MAX / 10 && \
 			(*nptr - '0') > LLONG_MAX % 10 + (sign == -1)))
-			return (false);
+			return (0);
 		i = i * 10 + (*nptr - '0');
 		nptr++;
 	}
 	if (*nptr != '\0')
-		return (false);
+		return (0);
 	*result = i * sign;
-	return (true);
+	return (1);
 }
