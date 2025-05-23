@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/24 03:33:41 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/24 04:38:20 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_cylinder
 	t_rgb	color;
 }	t_cylinder;
 
+// Test
 typedef	struct	s_mouse
 {
 	int	x;
@@ -88,6 +89,15 @@ typedef	struct	s_mouse
 	int	mouse_drag;
 	int	(*funct)(void*);
 }	t_mouse;
+
+typedef	struct s_image
+{
+	void	*mlx_img;
+	char	*mlx_img_data;
+	int		bbp;
+	int		size_line;
+	int		endian;
+}	t_image;
 
 typedef struct s_data
 {
@@ -112,6 +122,7 @@ typedef struct s_data
 
 	//Test
 	t_mouse		mouse;
+	t_image		img;
 }	t_data;
 
 // Test mouse_drag;

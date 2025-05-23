@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/24 03:42:02 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/24 04:37:01 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,37 @@ int	key_handle(int keycode, void *param)
 	return (0);
 }
 
+
+// Image test
+void	put_image_back(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.mlx_img, 0, 0);
+}
+
+void	piexl_color(t_data *data, int x, int y, int color)
+{
+	int	pos;
+
+    pos = y * data->img.size_line + x * (data->img.bbp / 8);
+    *(unsigned int *)(data->img.mlx_img_data + pos) = color;
+	put_image_back(data);
+}
+
+void	create_image(t_data *data)
+{
+	data->img.mlx_img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+	data->img.mlx_img_data = mlx_get_data_addr(data->img.mlx_img, &data->img.bbp, &data->img.size_line, &data->img.endian);
+	put_image_back(data);
+}
+
+// Mouse Test
 int	test_mouse_drag(void *param)
 {
 	t_mouse	mouse;
 	
 	mouse = ((t_data *)param)->mouse;
 	printf("x : %d, y : %d\n", mouse.x, mouse.y);
+	piexl_color((t_data *)param, mouse.x, mouse.y, 0xFF0000);
 	return (0);
 }
 
@@ -45,11 +70,14 @@ int	main(int argc, char **argv)
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
+	data.win_height = 800;
+	data.win_width = 600;
 	if (parser("test.rt", &data))
 		return (free_all(&data), print_error("Error: Parsing!\n"));
 	print_data(data);
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 800, 600, "Hello World");
+	create_image(&data);
 	// DestoryNotify 17, NoEventMask 0
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
 	mlx_key_hook(data.mlx_win, key_handle, &data);
