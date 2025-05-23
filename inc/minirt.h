@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/21 03:45:08 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/24 03:33:41 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ typedef struct s_cylinder
 	t_rgb	color;
 }	t_cylinder;
 
+typedef	struct	s_mouse
+{
+	int	x;
+	int	y;
+	int	mouse_drag;
+	int	(*funct)(void*);
+}	t_mouse;
+
 typedef struct s_data
 {
 	int			i;
@@ -101,7 +109,13 @@ typedef struct s_data
 	int			sphere_count;
 	int			plane_count;
 	int			cylinder_count;
+
+	//Test
+	t_mouse		mouse;
 }	t_data;
+
+// Test mouse_drag;
+int	mouse_drag(int (*funct)(), void *param);
 
 int	handle_keypress(int keysym, t_data *data);
 int	close_win(t_data *data);

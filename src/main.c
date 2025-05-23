@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/21 03:52:27 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/24 03:42:02 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@ int	print_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	return (1);
+}
+
+int	key_handle(int keycode, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (keycode == 53)
+		close_win(data);
+	return (0);
+}
+
+int	test_mouse_drag(void *param)
+{
+	t_mouse	mouse;
+	
+	mouse = ((t_data *)param)->mouse;
+	printf("x : %d, y : %d\n", mouse.x, mouse.y);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -33,6 +52,11 @@ int	main(int argc, char **argv)
 	data.mlx_win = mlx_new_window(data.mlx, 800, 600, "Hello World");
 	// DestoryNotify 17, NoEventMask 0
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
+	mlx_key_hook(data.mlx_win, key_handle, &data);
+
+	// Test
+	mouse_drag(test_mouse_drag, &data);
+
 	mlx_loop(data.mlx);
 	if (parse_ambient(data.scene[1], &data.ambient) == 0)
 	{
