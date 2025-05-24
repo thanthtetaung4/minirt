@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/24 04:37:01 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/24 05:00:53 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	key_handle(int keycode, void *param)
 		close_win(data);
 	return (0);
 }
-
 
 // Image test
 void	put_image_back(t_data *data)
