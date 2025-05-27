@@ -86,7 +86,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@$(MAKE) -C $(MLX_PATH) fclean
+	# @$(MAKE) -C $(MLX_PATH) fclean
 	@echo "\033[35m[Fully cleaned up]\033[0m"
 
 # Recompile everything

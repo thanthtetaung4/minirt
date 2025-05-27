@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/24 04:38:20 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:27:45 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,6 @@ typedef struct s_data
 	t_image		img;
 }	t_data;
 
-// Test mouse_drag;
-int	mouse_drag(int (*funct)(), void *param);
-
 int	handle_keypress(int keysym, t_data *data);
 int	close_win(t_data *data);
 
@@ -155,7 +152,6 @@ int	check_range(float value, float min, float max);
 // Utility functions
 int	print_2d_array(char **arr);
 
-
 // Error
 int	print_error(char *msg);
 
@@ -169,5 +165,11 @@ void	print_sphere(void *data);
 void	print_plane(void *data);
 void	print_cylinder(void *data);
 void	print_data(t_data data);
+
+//Image
+void	create_image(t_data *data);
+
+// Test mouse_drag;
+int	mouse_drag(int (*funct)(), void *param);
 
 #endif

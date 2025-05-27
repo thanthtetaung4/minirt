@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/24 05:00:53 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:26:53 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ int	key_handle(int keycode, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (keycode == 53)
+	printf("%d\n", keycode);
+	if (keycode == 65307)
 		close_win(data);
+	else if (keycode == 32)
+	{
+		mlx_destroy_image(data->mlx, data->img.mlx_img);
+		create_image(data);
+	}
 	return (0);
 }
 
@@ -38,6 +44,8 @@ void	piexl_color(t_data *data, int x, int y, int color)
 {
 	int	pos;
 
+	if (x < 0 || x > data->win_width || y < 0 || y > data->win_height)
+		return ;
     pos = y * data->img.size_line + x * (data->img.bbp / 8);
     *(unsigned int *)(data->img.mlx_img_data + pos) = color;
 	put_image_back(data);
@@ -57,6 +65,8 @@ int	test_mouse_drag(void *param)
 	
 	mouse = ((t_data *)param)->mouse;
 	printf("x : %d, y : %d\n", mouse.x, mouse.y);
+	if (!((t_data *)param)->img.mlx_img)
+		return (0);
 	piexl_color((t_data *)param, mouse.x, mouse.y, 0xFF0000);
 	return (0);
 }
@@ -69,13 +79,13 @@ int	main(int argc, char **argv)
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
-	data.win_height = 800;
-	data.win_width = 600;
+	data.win_height = 600;
+	data.win_width = 800;
 	if (parser("test.rt", &data))
 		return (free_all(&data), print_error("Error: Parsing!\n"));
 	print_data(data);
 	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 800, 600, "Hello World");
+	data.mlx_win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Hello World");
 	create_image(&data);
 	// DestoryNotify 17, NoEventMask 0
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
