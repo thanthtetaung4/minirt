@@ -11,7 +11,7 @@ else ifeq ($(UNAME), Linux)
 	MLX_PATH = ./mlx
 	MLX_LIB = $(MLX_PATH)/libmlx.a
 	MLX_REPO = https://github.com/42Paris/minilibx-linux.git
-	MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11
+	MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11 
 else
 	$(error $(shell printf "\033[31mUnsupported OS: $(UNAME)\033[0m"))
 endif
@@ -50,7 +50,7 @@ all: $(NAME)
 
 $(NAME): $(MLX_LIB) $(OBJS)  $(LIBFT)
 	@echo "$(NAME) compiling..."
-	@$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) $(LIBFT) $(MLX_LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -L$(LIBFT_PATH) $(LIBFT) $(MLX_LIB) -lm -o $(NAME)
 
 # Clone and compile the MiniLibX library
 $(MLX_LIB):

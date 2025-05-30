@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:33:34 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/21 03:04:30 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/30 21:03:04 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstdelnode(t_list **lst, void *data, \
 		int (*match)(void *, void *), void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstiter_param(t_list *lst, void (*f)(void *, void *), void *param);
+
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *data);

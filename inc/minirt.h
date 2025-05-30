@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/28 07:23:32 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/30 21:21:58 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,10 +170,10 @@ void	print_data(t_data data);
 void	create_image(t_data *data);
 
 // Test mouse_drag;
-int	mouse_drag(int (*funct)(), void *param);
+int		mouse_drag(int (*funct)(), void *param);
 
 void	img_pixel_put(t_data *data, int x, int y, int color);
 void	put_image_back(t_data *data);
-void	circle(t_data *data);
+void	draw_circle(void *lst_data, void *data);
 
 #endif
