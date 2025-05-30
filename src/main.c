@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/27 16:26:53 by aoo              ###   ########.fr       */
+/*   Updated: 2025/05/28 07:25:22 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	put_image_back(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.mlx_img, 0, 0);
 }
 
-void	piexl_color(t_data *data, int x, int y, int color)
+void	img_pixel_put(t_data *data, int x, int y, int color)
 {
 	int	pos;
 
@@ -67,7 +67,7 @@ int	test_mouse_drag(void *param)
 	printf("x : %d, y : %d\n", mouse.x, mouse.y);
 	if (!((t_data *)param)->img.mlx_img)
 		return (0);
-	piexl_color((t_data *)param, mouse.x, mouse.y, 0xFF0000);
+	img_pixel_put((t_data *)param, mouse.x, mouse.y, 0xFF0000);
 	return (0);
 }
 
@@ -91,8 +91,9 @@ int	main(int argc, char **argv)
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
 	mlx_key_hook(data.mlx_win, key_handle, &data);
 
+	circle(&data);
 	// Test
-	mouse_drag(test_mouse_drag, &data);
+	// mouse_drag(test_mouse_drag, &data);
 
 	mlx_loop(data.mlx);
 	if (parse_ambient(data.scene[1], &data.ambient) == 0)
@@ -101,7 +102,6 @@ int	main(int argc, char **argv)
 		free_all(&data);
 		return (1);
 	}
-
 	free_all(&data);
 	return (0);
 }
