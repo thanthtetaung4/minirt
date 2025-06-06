@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/06/06 14:44:40 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/06 14:53:51 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 
 	xyz = ft_split(str, ",");
 	if (ft_strslen(xyz) != 3)
-		return (1);
+		return (free_strs(xyz), 1);
 	if (ft_atof_vali(xyz[0], &origin->x) && ft_atof_vali(xyz[1], &origin->y) &&
 		ft_atof_vali(xyz[2], &origin->z))
 	{
@@ -46,7 +46,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 		{
 			if (check_range(origin->x, -1, 1) || check_range(origin->y, -1, 1)
 			|| check_range(origin->z, -1, 1))
-				return (1);
+				return (free_strs(xyz), 1);
 		}
 		return (0);
 	}
