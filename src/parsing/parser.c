@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 14:02:38 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/06 14:53:51 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	parse_rgb(char *str, t_rgb *color)
 
 	rgb = ft_split(str, ",");
 	if (ft_strslen(rgb) != 3)
-		return (1);
+		return (free_strs(rgb), 1);
 	if (ft_atoi_vali(rgb[0], &color->r) && !check_range(color->r, 0, 255))
 	{
 		if (ft_atoi_vali(rgb[1], &color->g) && !check_range(color->g, 0, 255))
@@ -37,7 +37,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 
 	xyz = ft_split(str, ",");
 	if (ft_strslen(xyz) != 3)
-		return (1);
+		return (free_strs(xyz), 1);
 	if (ft_atof_vali(xyz[0], &origin->x) && ft_atof_vali(xyz[1], &origin->y) &&
 		ft_atof_vali(xyz[2], &origin->z))
 	{
@@ -46,7 +46,7 @@ int	parse_xyz(char *str, t_xyz *origin, int vector)
 		{
 			if (check_range(origin->x, -1, 1) || check_range(origin->y, -1, 1)
 			|| check_range(origin->z, -1, 1))
-				return (1);
+				return (free_strs(xyz), 1);
 		}
 		return (0);
 	}
@@ -90,19 +90,19 @@ int	object_parser(char *res, t_data *data)
 	if (ft_strcmp(split[0], "sp") == 0)
 	{
 		if (parse_sphere(res, &data->spheres))
-			return (print_error("Error: Invalid sphere!\n"));
+			return (free_strs(split), print_error("Error: Invalid sphere!\n"));
 		data->sphere_count++;
 	}
 	else if (ft_strcmp(split[0], "pl") == 0)
 	{
 		if (parse_plane(res, &data->planes))
-			return (print_error("Error: Invalid plane!\n"));
+			return (free_strs(split), print_error("Error: Invalid plane!\n"));
 		data->plane_count++;
 	}
 	else if (ft_strcmp(split[0], "cy") == 0)
 	{
 		if (parse_cylinder(res, &data->cylinders))
-			return (print_error("Error: Invalid cylinder!\n"));
+			return (free_strs(split), print_error("Error: Invalid cylinder!\n"));
 		data->cylinder_count++;
 	}
 	free_split(split);
@@ -122,9 +122,10 @@ int	parser(char *filename, t_data *data)
 	res = get_next_line(fd);
 	while (res)
 	{
-		if (scene_parser(res, data) != 0 || object_parser(res, data) != 0)
+		if (*res != '\n' && (scene_parser(res, data) != 0 || object_parser(res, data) != 0))
 		{
 			free(res);
+			free_all(data);
 			return (close(fd) || 1);
 		}
 		free(res);

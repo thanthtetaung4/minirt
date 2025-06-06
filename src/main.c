@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/06/07 06:51:41 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/07 07:07:51 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	create_image(t_data *data)
 int	test_mouse_drag(void *param)
 {
 	t_mouse	mouse;
-	
+
 	mouse = ((t_data *)param)->mouse;
 	printf("x : %d, y : %d\n", mouse.x, mouse.y);
 	if (!((t_data *)param)->img.mlx_img)
@@ -84,20 +84,20 @@ int	main(int argc, char **argv)
 	if (parser("test.rt", &data))
 		return (free_all(&data), print_error("Error: Parsing!\n"));
 	print_data(data);
-	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Hello World");
-	create_image(&data);
-	// DestoryNotify 17, NoEventMask 0
-	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
-	mlx_key_hook(data.mlx_win, key_handle, &data);
+	// data.mlx = mlx_init();
+	// data.mlx_win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Hello World");
+	// create_image(&data);
+	// // DestoryNotify 17, NoEventMask 0
+	// mlx_hook(data.mlx_win, 17, 0, close_win, &data);
+	// mlx_key_hook(data.mlx_win, key_handle, &data);
 
-	ft_lstiter_param(data.spheres, draw_circle, &data);
-	// printf("x : %f, y : %f\n", ((t_sphere *)data.spheres->data)->origin.x, ((t_sphere *)data.spheres)->origin.y);
-	// circle(&data);
-	// Test
-	// mouse_drag(test_mouse_drag, &data);
+	// ft_lstiter_param(data.spheres, draw_circle, &data);
+	// // printf("x : %f, y : %f\n", ((t_sphere *)data.spheres->data)->origin.x, ((t_sphere *)data.spheres)->origin.y);
+	// // circle(&data);
+	// // Test
+	// // mouse_drag(test_mouse_drag, &data);
 
-	mlx_loop(data.mlx);
+	// mlx_loop(data.mlx);
 	// if (parse_ambient(data.scene[1], &data.ambient) == 0)
 	// {
 	// 	ft_putstr_fd("Error: Invalid ambient\n", 2);
