@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/30 21:24:11 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/07 06:51:41 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int	main(int argc, char **argv)
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
-	data.win_height = 600;
-	data.win_width = 800;
+	data.win_width = 1500;
+	data.win_height = 800;
 	if (parser("test.rt", &data))
 		return (free_all(&data), print_error("Error: Parsing!\n"));
 	print_data(data);
