@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/10 05:54:16 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 06:16:31 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int parse_ambient(char *line, t_ambient *ambient)
 		return (free_strs(split), 1);
 	if (parse_rgb(split[2], &ambient->color))
 		return (free_strs(split), 1);
+	ambient->color.r /= 255.0f;
+	ambient->color.g /= 255.0f;
+	ambient->color.b /= 255.0f;
 	free_strs(split);
 	return (0);
 }

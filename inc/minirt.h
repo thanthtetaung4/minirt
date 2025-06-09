@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/10 06:02:53 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 06:15:46 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,6 @@ void	put_image_back(t_data *data);
 
 // Draw
 void	draw_circle(void *lst_data, void *data);
-int		color(t_rgb color);
+int		ft_color(t_rgb color);
 
 #endif

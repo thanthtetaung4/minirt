@@ -6,13 +6,13 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 09:18:18 by aoo               #+#    #+#             */
-/*   Updated: 2025/06/10 05:52:44 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 06:16:22 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	color(t_rgb color)
+int	ft_color(t_rgb color)
 {
 	return ((color.r << 16 ) | (color.g << 8) | color.b);
 }
