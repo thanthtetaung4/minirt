@@ -16,26 +16,31 @@ else
 	$(error $(shell printf "\033[31mUnsupported OS: $(UNAME)\033[0m"))
 endif
 
+#include headers
+INCLUDE = -Iinc -Isrc/get_next_line -I$(MLX_PATH) -I$(LIBFT_PATH)
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 CFLAGS = #-Wall -Wextra -Werror
 
 # Source and object files
-MAP_PATH = ./src/map
-WIN_CTRL_PATH = ./src/win_ctrl
-UTILS_PATH = ./src/utils
-RENDER_PATH = ./src/render
-GAME_PATH = ./src/game
-FREE_PATH = ./src/free
-PARSING_PATH = ./src/parsing
-DRAW_PATH = ./src/draw
+# MAP_PATH = ./src/map
+# WIN_CTRL_PATH = ./src/win_ctrl
+# UTILS_PATH = ./src/utils
+# RENDER_PATH = ./src/render
+# GAME_PATH = ./src/game
+# FREE_PATH = ./src/free
+# PARSING_PATH = ./src/parsing
+# DRAW_PATH = ./src/draw
 
-SRCS = src/print.c src/main.c src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
-		$(WIN_CTRL_PATH)/win_ctrl.c $(WIN_CTRL_PATH)/mouse_drag.c $(FREE_PATH)/ft_free.c $(PARSING_PATH)/parser.c \
-		$(PARSING_PATH)/parser_utils.c $(PARSING_PATH)/ambient_parser.c $(PARSING_PATH)/light_parser.c \
-		$(PARSING_PATH)/camera_parser.c $(PARSING_PATH)/sphere_parser.c $(PARSING_PATH)/cylinder_parser.c \
-		$(PARSING_PATH)/plane_parser.c $(UTILS_PATH)/utils_one.c $(DRAW_PATH)/circle.c $(DRAW_PATH)/color.c
+# SRCS = src/print.c src/main.c src/get_next_line/get_next_line.c \
+# 		$(WIN_CTRL_PATH)/win_ctrl.c $(WIN_CTRL_PATH)/mouse_drag.c $(FREE_PATH)/ft_free.c $(PARSING_PATH)/parser.c \
+# 		$(PARSING_PATH)/parser_utils.c $(PARSING_PATH)/ambient_parser.c $(PARSING_PATH)/light_parser.c \
+# 		$(PARSING_PATH)/camera_parser.c $(PARSING_PATH)/sphere_parser.c $(PARSING_PATH)/cylinder_parser.c \
+# 		$(PARSING_PATH)/plane_parser.c $(UTILS_PATH)/utils_one.c $(DRAW_PATH)/circle.c $(DRAW_PATH)/color.c
+
+SRCS := $(shell find ./src -type f -name '*.c')
+SRCS += main.c
 OBJS = $(SRCS:.c=.o)
 
 # Compiler
@@ -87,7 +92,6 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	# @$(MAKE) -C $(MLX_PATH) fclean
 	@echo "\033[35m[Fully cleaned up]\033[0m"
 
 # Recompile everything
@@ -95,6 +99,6 @@ re: fclean all
 
 # Compile .o files
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 .PHONY: all clean fclean re

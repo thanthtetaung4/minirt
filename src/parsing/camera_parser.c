@@ -6,11 +6,11 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 04:43:05 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 05:54:27 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 int	parse_camera(char *line, t_camera *camera)
 {

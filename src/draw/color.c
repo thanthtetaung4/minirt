@@ -6,11 +6,11 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 09:18:18 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/31 09:49:34 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 05:52:44 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 int	color(t_rgb color)
 {

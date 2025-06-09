@@ -6,11 +6,11 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/05/30 21:24:11 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 05:51:37 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "minirt.h"
 
 int	print_error(char *msg)
 {
@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
 	// printf("x : %f, y : %f\n", ((t_sphere *)data.spheres->data)->origin.x, ((t_sphere *)data.spheres)->origin.y);
 	// circle(&data);
 	// Test
-	// mouse_drag(test_mouse_drag, &data);
+	mouse_drag(test_mouse_drag, &data);
 
 	mlx_loop(data.mlx);
 	// if (parse_ambient(data.scene[1], &data.ambient) == 0)
