@@ -11,7 +11,7 @@ int	print_2d_array(char **arr)
 	return (1);
 }
 
-void	print_xyz(t_xyz origin)
+void	print_xyz(t_vec3 origin)
 {
 	printf("xyz - [%f, %f, %f]", origin.x, origin.y, origin.z);
 }

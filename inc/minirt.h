@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/07 06:29:59 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/21 12:35:00 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@
 # include <math.h>
 # include <limits.h>
 
-typedef struct s_xyz
+typedef struct s_vec3
 {
 	float	x;
 	float	y;
 	float	z;
-}	t_xyz;
+}	t_vec3;
+
+typedef struct s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_ray;
 
 typedef struct s_rgb
 {
@@ -46,36 +52,36 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	t_xyz	origin;
-	t_xyz	v_origin;
+	t_vec3	origin;
+	t_vec3	v_origin;
 	float	fov;
 }	t_camera;
 
 typedef struct s_light
 {
-	t_xyz	origin;
+	t_vec3	origin;
 	float	ratio;
 	t_rgb	color;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_xyz	origin;
+	t_vec3	origin;
 	float	diameter;
 	t_rgb	color;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_xyz	origin;
-	t_xyz	v_origin;
+	t_vec3	origin;
+	t_vec3	v_origin;
 	t_rgb	color;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_xyz	origin;
-	t_xyz	v_origin;
+	t_vec3	origin;
+	t_vec3	v_origin;
 	float	diameter;
 	float	height;
 	t_rgb	color;
@@ -135,7 +141,7 @@ void	free_split(char **split);
 
 // Parsing functions
 int	parse_rgb(char *str, t_rgb *color);
-int	parse_xyz(char *str, t_xyz *origin, int vector);
+int	parse_xyz(char *str, t_vec3 *origin, int vector);
 
 int	parser(char *filename, t_data *data);
 int	count_row(const char *path);
@@ -156,7 +162,7 @@ int	print_2d_array(char **arr);
 int	print_error(char *msg);
 
 // Print data
-void	print_xyz(t_xyz origin);
+void	print_xyz(t_vec3 origin);
 void	print_rgb(t_rgb color);
 void	print_ambient(t_ambient amb);
 void	print_camera(t_camera camera);

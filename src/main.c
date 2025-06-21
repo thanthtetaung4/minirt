@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/06/07 07:07:51 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/21 12:34:10 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_rgb	color;
-	t_xyz	origin;
+	t_vec3	origin;
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));

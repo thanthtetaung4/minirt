@@ -6,7 +6,7 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/06/06 14:53:51 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/21 12:34:10 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_rgb(char *str, t_rgb *color)
 	return (1);
 }
 
-int	parse_xyz(char *str, t_xyz *origin, int vector)
+int	parse_xyz(char *str, t_vec3 *origin, int vector)
 {
 	char	**xyz;
 
