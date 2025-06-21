@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/07 06:29:59 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/21 15:05:34 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_ambient
 {
 	float	ratio;
 	t_rgb	color;
+	int		hex_color;
 }	t_ambient;
 
 typedef struct s_camera
@@ -56,6 +57,7 @@ typedef struct s_light
 	t_xyz	origin;
 	float	ratio;
 	t_rgb	color;
+	int		hex_color;
 }	t_light;
 
 typedef struct s_sphere
@@ -63,6 +65,7 @@ typedef struct s_sphere
 	t_xyz	origin;
 	float	diameter;
 	t_rgb	color;
+	int		hex_color;
 }	t_sphere;
 
 typedef struct s_plane
@@ -70,6 +73,7 @@ typedef struct s_plane
 	t_xyz	origin;
 	t_xyz	v_origin;
 	t_rgb	color;
+	int		hex_color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -79,6 +83,7 @@ typedef struct s_cylinder
 	float	diameter;
 	float	height;
 	t_rgb	color;
+	int		hex_color;
 }	t_cylinder;
 
 // Test
@@ -151,6 +156,7 @@ int	check_range(float value, float min, float max);
 
 // Utility functions
 int	print_2d_array(char **arr);
+int	ft_rand(int min, int max);
 
 // Error
 int	print_error(char *msg);

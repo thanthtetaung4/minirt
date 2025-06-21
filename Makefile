@@ -11,7 +11,7 @@ else ifeq ($(UNAME), Linux)
 	MLX_PATH = ./mlx
 	MLX_LIB = $(MLX_PATH)/libmlx.a
 	MLX_REPO = https://github.com/42Paris/minilibx-linux.git
-	MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11 
+	MLX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11
 else
 	$(error $(shell printf "\033[31mUnsupported OS: $(UNAME)\033[0m"))
 endif
@@ -35,7 +35,8 @@ SRCS = src/print.c src/main.c src/get_next_line/get_next_line.c src/get_next_lin
 		$(WIN_CTRL_PATH)/win_ctrl.c $(WIN_CTRL_PATH)/mouse_drag.c $(FREE_PATH)/ft_free.c $(PARSING_PATH)/parser.c \
 		$(PARSING_PATH)/parser_utils.c $(PARSING_PATH)/ambient_parser.c $(PARSING_PATH)/light_parser.c \
 		$(PARSING_PATH)/camera_parser.c $(PARSING_PATH)/sphere_parser.c $(PARSING_PATH)/cylinder_parser.c \
-		$(PARSING_PATH)/plane_parser.c $(UTILS_PATH)/utils_one.c $(DRAW_PATH)/circle.c $(DRAW_PATH)/color.c
+		$(PARSING_PATH)/plane_parser.c $(UTILS_PATH)/utils_one.c \
+		$(UTILS_PATH)/ft_rand.c
 OBJS = $(SRCS:.c=.o)
 
 # Compiler
