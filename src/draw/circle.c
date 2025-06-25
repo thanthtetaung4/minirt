@@ -1,4 +1,45 @@
-#include "../inc/minirt.h"
+#include "minirt.h"
+
+// void	draw_circle(void *lst_data, void *param)
+// {
+// 	t_sphere	*sphere;
+// 	t_data		*data;
+// 	float		radius;
+// 	float		i;
+
+// 	i = 0;
+// 	sphere = (t_sphere *)lst_data;
+// 	data = (t_data *)param;
+// 	radius = sphere->diameter / 2;
+// 	while (i < 360)
+// 	{
+// 		img_pixel_put(data, sphere->origin.x + radius * cos(i * M_PI / 180.0), \
+// 							sphere->origin.y + radius * sin(i * M_PI / 180.0), \
+// 							color(sphere->color));
+// 		i += 0.1;
+// 	}
+// 	put_image_back(data);
+// }
+
+
+void	draw_circle_line(t_sphere *sphere, t_data *data, int x, int y)
+{
+	int	origin_x;
+	int	origin_y;
+	int	color;
+
+	origin_x = sphere->origin.x;
+	origin_y = sphere->origin.y;
+	color = ft_color(sphere->color);
+	img_pixel_put(data, origin_x + x, origin_y + y, color);
+	img_pixel_put(data, origin_x - x, origin_y + y, color);
+	img_pixel_put(data, origin_x + x, origin_y - y, color);
+	img_pixel_put(data, origin_x - x, origin_y - y, color);
+	img_pixel_put(data, origin_x + y, origin_y + x, color);
+	img_pixel_put(data, origin_x - y, origin_y + x, color);
+	img_pixel_put(data, origin_x + y, origin_y - x, color);
+	img_pixel_put(data, origin_x - y, origin_y - x, color);
+}
 
 // void	draw_circle(void *lst_data, void *param)
 // {

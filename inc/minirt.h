@@ -3,26 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/21 12:35:00 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/26 05:14:53 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include <stdio.h>
-# include "../libft/libft.h"
-# include "../src/get_next_line/get_next_line.h"
-# include <unistd.h>
-# include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
 # include <mlx.h>
 // # include <X11/keysym.h>
 // # include <X11/X.h>
 # include <math.h>
-# include <limits.h>
 
 typedef struct s_vec3
 {

@@ -6,11 +6,11 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:07:39 by taung             #+#    #+#             */
-/*   Updated: 2025/05/21 03:11:52 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 05:52:49 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 void	free_scene(t_data *data)
 {
