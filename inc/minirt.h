@@ -6,23 +6,19 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/07 06:29:59 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 06:15:46 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include <stdio.h>
-# include "../libft/libft.h"
-# include "../src/get_next_line/get_next_line.h"
-# include <unistd.h>
-# include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
 # include <mlx.h>
 // # include <X11/keysym.h>
 // # include <X11/X.h>
 # include <math.h>
-# include <limits.h>
 
 typedef struct s_xyz
 {

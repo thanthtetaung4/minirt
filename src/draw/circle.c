@@ -1,4 +1,4 @@
-#include "../inc/minirt.h"
+#include "minirt.h"
 
 // void	draw_circle(void *lst_data, void *param)
 // {
