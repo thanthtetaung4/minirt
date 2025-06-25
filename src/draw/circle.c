@@ -63,24 +63,24 @@ void	draw_circle_line(t_sphere *sphere, t_data *data, int x, int y)
 // }
 
 
-void	draw_circle_line(t_sphere *sphere, t_data *data, int x, int y)
-{
-	int	origin_x;
-	int	origin_y;
-	int	color;
+// void	draw_circle_line(t_sphere *sphere, t_data *data, int x, int y)
+// {
+// 	int	origin_x;
+// 	int	origin_y;
+// 	int	color;
 
-	origin_x = sphere->origin.x;
-	origin_y = sphere->origin.y;
-	color = ft_color(sphere->color);
-	img_pixel_put(data, origin_x + x, origin_y + y, color);
-	img_pixel_put(data, origin_x - x, origin_y + y, color);
-	img_pixel_put(data, origin_x + x, origin_y - y, color);
-	img_pixel_put(data, origin_x - x, origin_y - y, color);
-	img_pixel_put(data, origin_x + y, origin_y + x, color);
-	img_pixel_put(data, origin_x - y, origin_y + x, color);
-	img_pixel_put(data, origin_x + y, origin_y - x, color);
-	img_pixel_put(data, origin_x - y, origin_y - x, color);
-}
+// 	origin_x = sphere->origin.x;
+// 	origin_y = sphere->origin.y;
+// 	color = ft_color(sphere->color);
+// 	img_pixel_put(data, origin_x + x, origin_y + y, color);
+// 	img_pixel_put(data, origin_x - x, origin_y + y, color);
+// 	img_pixel_put(data, origin_x + x, origin_y - y, color);
+// 	img_pixel_put(data, origin_x - x, origin_y - y, color);
+// 	img_pixel_put(data, origin_x + y, origin_y + x, color);
+// 	img_pixel_put(data, origin_x - y, origin_y + x, color);
+// 	img_pixel_put(data, origin_x + y, origin_y - x, color);
+// 	img_pixel_put(data, origin_x - y, origin_y - x, color);
+// }
 
 void	draw_circle(void *lst_data, void *param)
 {

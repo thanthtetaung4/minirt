@@ -1,17 +1,3 @@
-<<<<<<< HEAD:src/main.c
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 02:39:59 by taung             #+#    #+#             */
-/*   Updated: 2025/06/21 12:34:10 by taung            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-=======
->>>>>>> aoo:main.c
 
 #include "minirt.h"
 
@@ -94,19 +80,11 @@ int	main(int argc, char **argv)
 	// mlx_hook(data.mlx_win, 17, 0, close_win, &data);
 	// mlx_key_hook(data.mlx_win, key_handle, &data);
 
-<<<<<<< HEAD:src/main.c
 	// ft_lstiter_param(data.spheres, draw_circle, &data);
-	// // printf("x : %f, y : %f\n", ((t_sphere *)data.spheres->data)->origin.x, ((t_sphere *)data.spheres)->origin.y);
-	// // circle(&data);
-	// // Test
-	// // mouse_drag(test_mouse_drag, &data);
-=======
-	ft_lstiter_param(data.spheres, draw_circle, &data);
 	// printf("x : %f, y : %f\n", ((t_sphere *)data.spheres->data)->origin.x, ((t_sphere *)data.spheres)->origin.y);
 	// circle(&data);
 	// Test
-	mouse_drag(test_mouse_drag, &data);
->>>>>>> aoo:main.c
+	// mouse_drag(test_mouse_drag, &data);
 
 	// mlx_loop(data.mlx);
 	// if (parse_ambient(data.scene[1], &data.ambient) == 0)

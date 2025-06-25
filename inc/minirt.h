@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/26 05:14:53 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/26 05:26:06 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIRT_H
 
 # include "libft.h"
-# include "get_next_line.h"
+# include "gnl.h"
 # include <mlx.h>
 // # include <X11/keysym.h>
 // # include <X11/X.h>

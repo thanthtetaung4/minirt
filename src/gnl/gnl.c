@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 03:08:08 by taung             #+#    #+#             */
-/*   Updated: 2025/06/10 06:01:55 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/10 05:40:34 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "gnl.h"
 
 int	ft_malloc_count(char *stock)
 {
@@ -81,7 +81,7 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*stock;

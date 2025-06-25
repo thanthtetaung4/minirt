@@ -31,7 +31,7 @@ CFLAGS := $(INCLUDES) #-Wall -Wextra -Werror
 
 SRC_DIR := src
 SRCS := $(shell find $(SRC_DIR) -type f -name '*.c')
-# SRCS += main.c
+SRCS += main.c
 OBJS := $(SRCS:.c=.o)
 
 # Rules

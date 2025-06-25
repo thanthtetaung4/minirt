@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:31:33 by taung             #+#    #+#             */
-/*   Updated: 2025/06/26 05:15:09 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/26 05:26:25 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	parser(char *filename, t_data *data)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (print_error("Error: Invalid path!\n"));
-	res = get_next_line(fd);
+	res = gnl(fd);
 	while (res)
 	{
 		if (*res != '\n' && (scene_parser(res, data) != 0 || object_parser(res, data) != 0))
@@ -129,7 +129,7 @@ int	parser(char *filename, t_data *data)
 			return (close(fd) || 1);
 		}
 		free(res);
-		res = get_next_line(fd);
+		res = gnl(fd);
 		i++;
 	}
 	free(res);
