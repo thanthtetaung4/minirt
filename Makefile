@@ -22,7 +22,7 @@ CC := cc
 # Executable name
 NAME := miniRT
 
-INCLUDES := -Iinc -Isrc/gnl
+INCLUDES := -Iinc -Isrc/gnl -Isrc/vector
 
 LIBFT_PATH := ./libft
 LIBFT := $(LIBFT_PATH)/libft.a

@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 02:40:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/26 05:26:06 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/26 05:48:01 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 
 # include "libft.h"
 # include "gnl.h"
+# include "vec3.h"
 # include <mlx.h>
 // # include <X11/keysym.h>
 // # include <X11/X.h>
 # include <math.h>
-
-typedef struct s_vec3
-{
-	float	x;
-	float	y;
-	float	z;
-}	t_vec3;
 
 typedef struct s_ray
 {
@@ -126,6 +120,9 @@ typedef struct s_data
 	t_mouse		mouse;
 	t_image		img;
 }	t_data;
+
+//	init.c
+void	init_win(t_data *data);
 
 int	handle_keypress(int keysym, t_data *data);
 int	close_win(t_data *data);

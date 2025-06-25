@@ -65,6 +65,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 	t_rgb	color;
 	t_vec3	origin;
+
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
 	ft_bzero(&data, sizeof(data));
