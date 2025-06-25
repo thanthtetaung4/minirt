@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	print_data(data);
 	init_image(&data);
 	put_image_back(&data);
+	// mouse_drag(mouse_drag_draw, &data);
 	mlx_loop(data.mlx);
 	// create_image(&data);
 	// // DestoryNotify 17, NoEventMask 0

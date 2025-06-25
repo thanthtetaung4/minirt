@@ -49,6 +49,7 @@ void	img_pixel_put(t_data *data, int x, int y, int color);
 void	put_image_back(t_data *data);
 
 // Mouse
+int		mouse_drag_draw(void *param);
 int		mouse_drag(int (*funct)(), void *param);
 
 // Draw
