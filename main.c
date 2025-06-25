@@ -7,75 +7,31 @@ int	print_error(char *msg)
 	return (1);
 }
 
-int	key_handle(int keycode, void *param)
+int init_data(t_data *data)
 {
-	t_data	*data;
-
-	data = (t_data *)param;
-	printf("%d\n", keycode);
-	if (keycode == 65307)
-		close_win(data);
-	else if (keycode == 32)
-	{
-		mlx_destroy_image(data->mlx, data->img.mlx_img);
-		create_image(data);
-	}
+	ft_bzero(data, sizeof(*data));
+	if (parser("test.rt", data))
+		return (print_error("Error: Parsing!\n"));
+	// print_data(*data);
+	if (init_win(data))
+		return (1);
 	return (0);
-}
-
-// Image test
-void	put_image_back(t_data *data)
-{
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.mlx_img, 0, 0);
-}
-
-void	img_pixel_put(t_data *data, int x, int y, int color)
-{
-	int	pos;
-
-	if (x < 0 || x > data->win_width || y < 0 || y > data->win_height)
-		return ;
-    pos = y * data->img.size_line + x * (data->img.bbp / 8);
-    *(unsigned int *)(data->img.mlx_img_data + pos) = color;
-	put_image_back(data);
-}
-
-void	create_image(t_data *data)
-{
-	data->img.mlx_img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-	data->img.mlx_img_data = mlx_get_data_addr(data->img.mlx_img, &data->img.bbp, &data->img.size_line, &data->img.endian);
-	put_image_back(data);
 }
 
 // Mouse Test
-int	test_mouse_drag(void *param)
-{
-	t_mouse	mouse;
-
-	mouse = ((t_data *)param)->mouse;
-	printf("x : %d, y : %d\n", mouse.x, mouse.y);
-	if (!((t_data *)param)->img.mlx_img)
-		return (0);
-	img_pixel_put((t_data *)param, mouse.x, mouse.y, 0xFF0000);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	t_rgb	color;
-	t_vec3	origin;
 
 	// if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 	// 	return (print_error("Error: Invalid file!\n"));
-	ft_bzero(&data, sizeof(data));
-	data.win_width = 1500;
-	data.win_height = 800;
-	if (parser("test.rt", &data))
-		return (free_all(&data), print_error("Error: Parsing!\n"));
+	if (init_data(&data))
+		return (free_all(&data), print_error("data initialtion failed!\n"));
 	print_data(data);
-	// data.mlx = mlx_init();
-	// data.mlx_win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Hello World");
+	init_image(&data);
+	put_image_back(&data);
+	mlx_loop(data.mlx);
 	// create_image(&data);
 	// // DestoryNotify 17, NoEventMask 0
 	// mlx_hook(data.mlx_win, 17, 0, close_win, &data);

@@ -6,12 +6,14 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 05:45:58 by aoo               #+#    #+#             */
-/*   Updated: 2025/06/26 05:52:18 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/26 07:05:33 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC3_H
 # define VEC3_H
+
+#include <math.h>
 
 typedef struct s_vec3
 {

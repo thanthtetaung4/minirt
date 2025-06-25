@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 03:09:50 by aoo               #+#    #+#             */
-/*   Updated: 2025/05/24 03:45:34 by aoo              ###   ########.fr       */
+/*   Updated: 2025/06/26 07:33:27 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,18 @@ int mouse_move(int x, int y, void *param)
 		data->mouse.funct(param);
 	}
     return (0);
+}
+
+int	mouse_drag_draw(void *param)
+{
+	t_mouse	mouse;
+
+	mouse = ((t_data *)param)->mouse;
+	printf("x : %d, y : %d\n", mouse.x, mouse.y);
+	if (!((t_data *)param)->img.mlx_img)
+		return (0);
+	img_pixel_put((t_data *)param, mouse.x, mouse.y, 0xFF0000);
+	return (0);
 }
 
 int	mouse_drag(int (*funct)(), void *param)

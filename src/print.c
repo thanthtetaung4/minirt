@@ -88,7 +88,7 @@ void	print_cylinder(void *data)
 
 void	print_data(t_data data)
 {
-	printf("index : %d\nwin_width : %d\nwin_height : %d\n", data.i, data.win_width, data.win_height);
+	printf("index : %d\nwin_width : %d\nwin_height : %d\n", data.i, WIN_WIDTH, WIN_HEIGHT);
 	printf("mlx : %p\n", data.mlx);
 	printf("mlx_win : %p\n", data.mlx_win);
 	printf("scene : \n");
