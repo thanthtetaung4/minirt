@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 09:18:18 by aoo               #+#    #+#             */
-/*   Updated: 2025/06/07 06:29:59 by aoo              ###   ########.fr       */
+/*   Created: 2021/11/30 17:00:15 by msanjuan          #+#    #+#             */
+/*   Updated: 2025/06/10 05:37:58 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#ifndef GNL_H
+# define GNL_H
 
-int	ft_color(t_rgb color)
-{
-	return ((color.r << 16 ) | (color.g << 8) | color.b);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+# include "libft.h"
+
+char	*gnl(int fd);
+
+#endif

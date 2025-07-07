@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_parser.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 13:30:13 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/10 05:54:17 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 int parse_cylinder(char *line, t_list **cylinders)
 {

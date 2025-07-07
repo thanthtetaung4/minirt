@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 03:08:08 by taung             #+#    #+#             */
-/*   Updated: 2024/10/29 03:08:10 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/10 05:40:34 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./get_next_line.h"
+#include "gnl.h"
 
 int	ft_malloc_count(char *stock)
 {
 	int	i;
 
 	i = 0;
-	if (f_strchr_gnl(stock, '\n') == NULL)
+	if (ft_strchr(stock, '\n') == NULL)
 		return (ft_strlen(stock));
 	while (stock[i] != '\n' && stock[i] != '\0')
 		i++;
@@ -81,7 +81,7 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*stock;
@@ -91,8 +91,8 @@ char	*get_next_line(int fd)
 	if ((read(fd, buffer, 0) == -1) || BUFFER_SIZE <= 0)
 		return (NULL);
 	ret = 1;
-	stock = f_strjoin_gnl(stock, buffer);
-	while (f_strchr_gnl(stock, '\n') == NULL && ret > 0)
+	stock = ft_strjoin(stock, buffer, 1, 0);
+	while (ft_strchr(stock, '\n') == NULL && ret > 0)
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
 		if (ret < 0)
@@ -101,40 +101,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		buffer[ret] = '\0';
-		stock = f_strjoin_gnl(stock, buffer);
+		stock = ft_strjoin(stock, buffer, 1, 0);
 	}
 	return (ft_line_results(ret, stock, buffer));
 }
-// #include<fcntl.h>
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	int			fd;
-// 	const char	*path;
-
-// 	path = "map1.ber";
-// 	// path = "test.txt";
-// 	// path = "test-long.txt";
-// 	printf("BUFFER_SIZE -> %i\n",BUFFER_SIZE);
-// 	fd = open(path, O_RDONLY);
-// 	char *res1 = get_next_line(fd);
-// 	char *res2 = get_next_line(fd);
-// 	char *res3 = get_next_line(fd);
-// 	char *res4 = get_next_line(fd);
-// 	char *res5 = get_next_line(fd);
-// 	printf("res1 : %s", res1);
-// 	// printf("\n-----------\n");
-// 	printf("res2 : %s", res2);
-// 	// printf("\n-----------\n");
-// 	printf("res3 : %s", res3);
-// 	// printf("\n-----------\n");
-// 	printf("res4 : %s", res4);
-// 	// printf("\n-----------\n");
-// 	printf("res5 : %s", res5);
-
-// 	free(res1);
-// 	free(res2);
-// 	free(res3);
-// 	free(res4);
-// 	free(res5);
-// }

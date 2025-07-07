@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/05/15 14:01:00 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/26 07:10:57 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 int parse_sphere(char *line, t_list **spheres)
 {
@@ -31,6 +31,7 @@ int parse_sphere(char *line, t_list **spheres)
 	if (!m_sphere)
 		return (1);
 	*m_sphere = sphere;
+	printf("done\n");
 	ft_lstadd_back(spheres, ft_lstnew(m_sphere));
 	return (0);
 }

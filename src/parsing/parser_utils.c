@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:37:25 by taung             #+#    #+#             */
-/*   Updated: 2025/05/14 05:16:28 by taung            ###   ########.fr       */
+/*   Updated: 2025/06/26 05:26:23 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 int	count_row(const char *path)
 {
@@ -25,7 +25,7 @@ int	count_row(const char *path)
 		ft_putstr_fd("INVALID PATH\n", 2);
 		return (0);
 	}
-	res = get_next_line(fd);
+	res = gnl(fd);
 	if (!res)
 		return (0);
 	while (res)
@@ -33,7 +33,7 @@ int	count_row(const char *path)
 		free(res);
 		res = NULL;
 		i++;
-		res = get_next_line(fd);
+		res = gnl(fd);
 	}
 	close(fd);
 	free(res);

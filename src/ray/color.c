@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 15:50:09 by taung             #+#    #+#             */
-/*   Updated: 2025/05/13 21:05:00 by taung            ###   ########.fr       */
+/*   Created: 2025/05/31 09:18:18 by aoo               #+#    #+#             */
+/*   Updated: 2025/06/26 07:30:23 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
-void init_data(t_data *data)
+int	ft_color(t_rgb color)
 {
-	data->mlx = NULL;
-	data->mlx_win = NULL;
-	data->scene = NULL;
-
+	return ((color.r << 16 ) | (color.g << 8) | color.b);
 }
