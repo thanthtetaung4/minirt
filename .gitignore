@@ -118,7 +118,7 @@ dkms.conf
 /minirt
 
 /rt1
-
+/miniRT
 **/.vscode/
 # Prerequisites
 *.d

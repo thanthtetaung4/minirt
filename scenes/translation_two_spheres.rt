@@ -1,0 +1,12 @@
+r 800 600
+A 0.2 255,255,255
+# camera behind the green sphere
+# C 0,0,10 0,0,-1 60
+# camera at +x looking back to -x side by side two balls
+C 15,0,-10 -1,0,1 60
+L 0,0,-5 0.8 255,255,255
+L 10,0,-5 0.8 255,255,255
+
+sp 0,0,0 2.0 255,0,0
+
+sp 0,0,5 2.0 0,255,0

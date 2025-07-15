@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   plane_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 23:24:16 by taung             #+#    #+#             */
-/*   Updated: 2025/06/10 05:54:25 by aoo              ###   ########.fr       */
+/*   Updated: 2025/07/10 17:35:17 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "rt.h"
 
-int parse_plane(char *line, t_list **planes)
+int	parse_plane(char *line, t_data *data)
 {
 	char	**split;
-	t_plane	*m_plane;
 	t_plane	plane;
 
 	split = ft_split(line, " \t\n");
 	if (!split || !*split)
-	return (1);
-	if (ft_strslen(split) != 4 || parse_xyz(split[1], &plane.origin, 0) ||
-		parse_xyz(split[2], &plane.v_origin, 0)||
-		parse_rgb(split[3], &plane.color))
-		return (free_strs(split), 1);
-	m_plane = malloc(sizeof(t_plane));
-	if (!m_plane)
-		return (1);
-	*m_plane = plane;
-	ft_lstadd_back(planes, ft_lstnew(m_plane));
+		return (0);
+	if (!(ft_strslen(split) >= 4 && ft_strslen(split) <= 6)
+		|| !parse_xyz(split[1], &plane.point, 0) || !parse_xyz(split[2],
+			&plane.normal, 1) || !parse_rgb(split[3], &plane.material.color))
+		return (free_strs(split), 0);
+	if (split[4])
+	{
+		if (!parse_material_i(split[4], split[5], &plane.material))
+			return (0);
+	}
+	else
+		init_mat(&plane.material);
+	data->scene->planes[data->scene->pl_i++] = plane;
 	free_strs(split);
-	return (0);
+	return (1);
 }
